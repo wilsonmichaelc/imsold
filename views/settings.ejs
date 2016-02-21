@@ -1,0 +1,36 @@
+<!-- views/settings.ejs -->
+<!doctype html>
+<html>
+<head>
+	<title>IMS</title>
+	<% include partials/bootstrap %> <!-- load bootstrap css -->
+	<% include partials/fa %> <!-- load fontawesome -->
+	<style>
+		body 		{ padding-top:80px; word-wrap:break-word; }
+	</style>
+</head>
+<body>
+
+<% include partials/nav %>
+
+<div class="container">
+		<div class="jumbotron text-center">
+				<h1>User Profile</h1>
+				<p>
+					<strong><%= user.name %></strong><br/>
+					<strong>UserID</strong>: <%= user.id %><br/>
+					<strong>Email</strong>: <%= user.email %><br/>
+					<strong>Password</strong>: <%= user.password %>
+					<strong>Admin</strong>:
+					<% if (user.Admin == 1) { %>
+						true
+					<% } else{ %>
+						false
+					<% } %>
+					<br/>
+				</p>
+		</div>
+</div>
+
+</body>
+</html>
