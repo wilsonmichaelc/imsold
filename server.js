@@ -12,6 +12,7 @@ var port     = process.env.PORT || 8080;
 
 var passport = require('passport');
 var flash    = require('connect-flash');
+var userManagement = require('./app/userManagement');
 
 // configuration ===============================================================
 // connect to our database

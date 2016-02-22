@@ -1,9 +1,6 @@
 // app/routes.js
 
-var mysql = require('mysql');
-var dbconfig = require('../config/database');
-var connection = mysql.createConnection(dbconfig.connection);
-connection.query('USE ' + dbconfig.database);
+//var userManagement = require('./userManagement.js');
 
 module.exports = function(app, passport) {
 
@@ -99,14 +96,8 @@ module.exports = function(app, passport) {
 	// we will want this protected so you have to be logged in to visit
 	// we will use route middleware to verify this (the isLoggedIn function)
 	app.get('/admin', isAdmin, function(req, res) {
-		var users = connection.query("SELECT * FROM Users", function(err, rows){
-			if(err){
-				return done(err);
-			}else if(rows.length){
-				rows;
-				console.log(rows);
-			}
-		});
+
+		var users = userManagement.selectUsers;
 		res.render('admin.ejs', {
 			user : req.user, // get the user out of session and pass to template
 			page : 'admin',
