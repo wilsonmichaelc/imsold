@@ -1,0 +1,67 @@
+<!-- views/admin.ejs -->
+<!doctype html>
+<html>
+<head>
+	<title>IMS</title>
+	<% include partials/bootstrap %> <!-- load bootstrap css -->
+	<% include partials/fa %> <!-- load fontawesome -->
+	<style>
+		body 		{ padding-top:80px; }
+	</style>
+</head>
+<body>
+
+  <% include partials/nav %>
+
+	<div class="container">
+      <div class="jumbotron">
+          <h3>User Management</h3>
+					<select id="userList">
+						<option value=""></option>
+					</select>
+
+      </div>
+
+			<div class="jumbotron">
+          <h3>Instrument Management</h3>
+
+      </div>
+  </div>
+
+<script>
+$(document).ready(function(){
+
+	$.ajax({
+		type: "GET",
+		url: "/api/users",
+		async: true,
+		dataType: "json",
+		success: function(users){
+			for (var i=0; i<users.length; i++) {
+				var option = document.createElement("option");
+				option.text = users[i].name
+				option.value = users[i].id
+				var select = document.getElementById("userList");
+				select.appendChild(option);
+			}
+
+		}
+	});
+
+	$(document).on('change', '#userList', function(){
+		$.ajax({
+			type: "GET",
+			url: "/api/users/" + $('#userList').val(),
+			async: true,
+			//data: JSON.stringify({ id: $('#userList').val() }),
+			dataType: "json",
+			success: function(user){
+				console.log(user);
+			}
+		});
+	});
+});
+</script>
+
+</body>
+</html>
