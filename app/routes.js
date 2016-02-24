@@ -1,8 +1,5 @@
 // app/routes.js
 
-
-//var userManagement = require('./userManagement.js');
-
 module.exports = function(app, passport) {
 
 	// =====================================

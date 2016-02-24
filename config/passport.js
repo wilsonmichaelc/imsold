@@ -8,8 +8,8 @@ var mysql = require('mysql');
 var bcrypt = require('bcrypt-nodejs');
 var dbconfig = require('./database');
 var connection = mysql.createConnection(dbconfig.connection);
-
 connection.query('USE ' + dbconfig.database);
+
 // expose this function to our app using module.exports
 module.exports = function(passport) {
 
@@ -74,7 +74,6 @@ module.exports = function(passport) {
     );
 
     // =========================================================================
-<<<<<<< HEAD
     // LOCAL VERIFY ============================================================
     // =========================================================================
     // we are using named strategies since we have one for login and one for signup
@@ -110,8 +109,6 @@ module.exports = function(passport) {
     );
 
     // =========================================================================
-=======
->>>>>>> 05f0b5073a0113da7cb757cf6bddd982c8245345
     // LOCAL LOGIN =============================================================
     // =========================================================================
     // we are using named strategies since we have one for login and one for signup

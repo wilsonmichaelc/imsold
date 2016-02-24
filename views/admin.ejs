@@ -14,7 +14,6 @@
   <% include partials/nav %>
 
 	<div class="container">
-<<<<<<< HEAD
       <div class="jumbotron">
           <h3>User Management</h3>
 					<select id="userList">
@@ -29,49 +28,39 @@
       </div>
   </div>
 
-<script>
-$(document).ready(function(){
+	<script>
+		$(document).ready(function(){
+			$.ajax({
+				type: "GET",
+				url: "/api/users",
+				async: true,
+				dataType: "json",
+				success: function(users){
+					for (var i=0; i<users.length; i++) {
+						var option = document.createElement("option");
+						option.text = users[i].name
+						option.value = users[i].id
+						var select = document.getElementById("userList");
+						select.appendChild(option);
+					}
 
-	$.ajax({
-		type: "GET",
-		url: "/api/users",
-		async: true,
-		dataType: "json",
-		success: function(users){
-			for (var i=0; i<users.length; i++) {
-				var option = document.createElement("option");
-				option.text = users[i].name
-				option.value = users[i].id
-				var select = document.getElementById("userList");
-				select.appendChild(option);
-			}
+				}
+			});
 
-		}
-	});
-
-	$(document).on('change', '#userList', function(){
-		$.ajax({
-			type: "GET",
-			url: "/api/users/" + $('#userList').val(),
-			async: true,
-			//data: JSON.stringify({ id: $('#userList').val() }),
-			dataType: "json",
-			success: function(user){
-				console.log(user);
-			}
+			$(document).on('change', '#userList', function(){
+				$.ajax({
+					type: "GET",
+					url: "/api/users/" + $('#userList').val(),
+					async: true,
+					//data: JSON.stringify({ id: $('#userList').val() }),
+					dataType: "json",
+					success: function(user){
+						console.log(user);
+					}
+				});
+			});
 		});
-	});
-});
-</script>
+	</script>
 
-=======
-      <div class="jumbotron text-center">
-          <h1>Admin Panel</h1>
-					<p>add/remove users, disable accounts, modify/cancel bookings</p>
-					<p><% allUsers %></p>
-      </div>
-  </div>
-
->>>>>>> 05f0b5073a0113da7cb757cf6bddd982c8245345
 </body>
 </html>
