@@ -1,10 +1,8 @@
 // app/routes.js
 
-<<<<<<< HEAD
-=======
+
 //var userManagement = require('./userManagement.js');
 
->>>>>>> 05f0b5073a0113da7cb757cf6bddd982c8245345
 module.exports = function(app, passport) {
 
 	// =====================================
@@ -30,7 +28,6 @@ module.exports = function(app, passport) {
             failureRedirect : '/login', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
 		}),
-<<<<<<< HEAD
     function(req, res) {
         if (req.body.remember) {
           req.session.cookie.maxAge = 1000 * 60 * 3;
@@ -50,7 +47,6 @@ module.exports = function(app, passport) {
 					res.redirect('/');
 			});
 
-=======
         function(req, res) {
             console.log("hello");
 
@@ -62,7 +58,6 @@ module.exports = function(app, passport) {
         res.redirect('/');
     });
 
->>>>>>> 05f0b5073a0113da7cb757cf6bddd982c8245345
 	// =====================================
 	// SIGNUP ==============================
 	// =====================================
@@ -121,7 +116,6 @@ module.exports = function(app, passport) {
 	// we will want this protected so you have to be logged in to visit
 	// we will use route middleware to verify this (the isLoggedIn function)
 	app.get('/admin', isAdmin, function(req, res) {
-<<<<<<< HEAD
 		res.render('admin.ejs', {
 			user : req.user, // get the user out of session and pass to template
 			page : 'admin',
@@ -137,7 +131,6 @@ module.exports = function(app, passport) {
 				//return JSON.stringify(rows);
 		//	}
 		//});
-=======
 
 		var users = userManagement.selectUsers;
 		res.render('admin.ejs', {
@@ -145,7 +138,6 @@ module.exports = function(app, passport) {
 			page : 'admin',
 			allUsers : users
 		});
->>>>>>> 05f0b5073a0113da7cb757cf6bddd982c8245345
 	});
 
 	// =====================================
@@ -205,7 +197,6 @@ function isSuperUser(req, res, next) {
 	// if they aren't redirect them to the home page
 	res.redirect('/');
 }
-<<<<<<< HEAD
 
 // route middleware to make sure user is logged in AND a super user
 function isAdminOrSuper(req, res, next) {
@@ -219,5 +210,3 @@ function isAdminOrSuper(req, res, next) {
 	// if they aren't redirect them to the home page
 	res.redirect('/');
 }
-=======
->>>>>>> 05f0b5073a0113da7cb757cf6bddd982c8245345
